@@ -1,0 +1,17 @@
+Terminal Command Cheatsheet
+
+Everyday Commands:
+ls - List items in current directory
+cd .. - Takes us up one level
+cd <directory> - Moves you into the specific path
+mkdir <directory> - Creates a specific directory
+touch <filename> - create specified filename
+pwd - print working directory
+cd - Takes back to home
+mv <specified source> <specified target> - Used for moving files or renaming
+cp <source> <target> - Copies files to specified location
+
+DANGEROUS COMMANDS:
+
+rm <filename> - remove a specified file
+rm -rf <directory name> remvoes a directory and everything in it
