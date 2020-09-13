@@ -2,6 +2,7 @@ import unittest
 from classes.room import Room
 from classes.guest import Guest
 from classes.song import Song
+from classes.refreshment import Refreshment
 
 class TestRoom(unittest.TestCase):
     
@@ -18,6 +19,7 @@ class TestRoom(unittest.TestCase):
 
         self.room_1 = Room(15)
         self.songs = [Song("Cher", "Believe"), Song("Madonna", "Holiday")]
+        self.refreshment = [Refreshment("Beer", 3, 20), Refreshment("Coke", 2, 10), Refreshment("Crisps", 1, 15)]
  
 
 
@@ -34,14 +36,14 @@ class TestRoom(unittest.TestCase):
         self.room_1.check_in(self.customers["Late Guest"])
         self.assertEqual(5, len(self.room_1.occupancy))
 
-    # def test_check_out(self):
-    #     self.room_1.check_in(self.customers["Pop Guest"])
-    #     self.room_1.check_in(self.customers["Rich Guest"])
-    #     self.room_1.check_in(self.customers["Arty Guest"])
-    #     self.room_1.check_in(self.customers["Thirsty Guest"])
-    #     self.room_1.check_in(self.customers["Dancing Guest"])
-    #     self.room_1.check_out(self.customers["Rich Guest"])
-    #     self.assertEqual([Guest("Madonna", 50, "Holiday"), Guest("Gaga", 50, "Paparazzi"), Guest("Kelis", 40, "Milkshake"), Guest("Rihanna", 50, "Umbrella")], self.room_1.occupancy)
+    def test_check_out(self):
+        self.room_1.check_in(self.customers["Pop Guest"])
+        self.room_1.check_in(self.customers["Rich Guest"])
+        self.room_1.check_in(self.customers["Arty Guest"])
+        self.room_1.check_in(self.customers["Thirsty Guest"])
+        self.room_1.check_in(self.customers["Dancing Guest"])
+        self.room_1.check_out(self.customers["Rich Guest"])
+        self.assertEqual(4, len(self.room_1.occupancy))
 
     def test_load_song(self):
         self.room_1.load_song(self.songs[0])
@@ -50,3 +52,14 @@ class TestRoom(unittest.TestCase):
     def test_fave_song(self):
         self.room_1.load_song(self.songs[0])
         self.assertEqual("Wooo!", self.room_1.fave_song(self.customers["Rich Guest"]))
+    
+    def test_add_stock_to_bar(self):
+        self.room_1.add_stock_to_bar(self.refreshment[0])
+        self.assertEqual(1, len(self.room_1.bar))
+    
+    def test_serve_guest_refreshment(self):
+        self.room_1.add_stock_to_bar(self.refreshment[0])
+        self.room_1.serve_guest_refreshment(self.room_1.bar[0])
+        self.assertEqual(3, self.room_1.tab)
+
+    
