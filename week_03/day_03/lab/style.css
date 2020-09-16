@@ -1,0 +1,63 @@
+.container0 {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #CFDDCF;
+    border: 4px solid #8A9EA8;
+}
+
+body>header>h1 {
+    color: #594157;
+}
+
+#item {
+    flex-direction: row;
+    margin-right: 10px;
+}
+
+body>main {
+    background-color: #E0DCE5;
+}
+
+.grid-container {
+    display: grid;
+    grid-column-start: auto;
+    grid-template-areas: 'menu main main';
+    padding: 10px
+}
+
+#menu {
+    grid-area: menu;
+    border: 4px solid #8A9EA8
+}
+
+#blogpost {
+    grid-area: main;
+    margin-left: 10px;
+}
+
+#container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 10px;
+    width: 90%;
+    margin: 30px
+}
+
+.image {
+    padding: 10px;
+    flex-direction: row
+}
+
+#come-meet {
+    align-items: center;
+    margin-right: 10px;
+    color: #594157;
+    text-align: center;
+}
+
+body>footer {
+    display: flex;
+    flex-direction: row;
+}

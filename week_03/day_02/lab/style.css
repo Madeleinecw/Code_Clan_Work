@@ -1,0 +1,41 @@
+header {
+    background-color: dodgerblue;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+body>main>aside {
+    grid-column-start: 1;
+    grid-row-end: 2;
+}
+
+#image-news {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-align: right;
+}
+
+#header {
+    text-align: center;
+}
+
+#comment-box {
+    display: flex;
+    justify-self: auto;
+}
+
+.grid-container {
+    display: inline-grid;
+    grid-gap: 5px;
+}
+
+#main-article {
+    padding: 10px;
+}
+
+footer {
+    background-color: dodgerblue;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}

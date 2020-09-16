@@ -1,3 +1,7 @@
+from guest import Guest
+
+customer = Guest("Cher", 200, "Believe")
+
 class Room:
 
     def __init__(self, entry):
@@ -42,4 +46,4 @@ class Room:
             self.tab += refreshment.price
             refreshment.stock -= 1
             
-    
+

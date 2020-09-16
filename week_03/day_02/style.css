@@ -1,0 +1,17 @@
+
+body > header {
+    background-color: dodgerblue;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body > footer {
+    background-color: dodgerblue;
+}
+
