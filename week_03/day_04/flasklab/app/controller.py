@@ -14,8 +14,16 @@ def add_event():
     eventDate = request.form['date']
     eventGuests = request.form['guests']
     eventLocation = request.form['location']
-    eventRecurring = request.form['recurring']
+    eventRecurring = True if 'recurring' in request.form else False
     newEvent = Event(eventDate,eventName, eventGuests, eventLocation, eventDesc, eventRecurring)
     add_new_event(newEvent)
     return render_template('index.html', title='Home', events=events)
 
+@app.route('/remove-event', methods=['POST'])
+def remove_event():
+    eventName = request.form["eventname"]
+    eventDate = request.form["eventdate"]
+    for event in events:
+        if eventName == event.name and eventDate == event.date:
+            remove_event_from_list(event)
+    return render_template('index.html', title='Home', events=events)

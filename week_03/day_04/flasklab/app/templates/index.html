@@ -12,17 +12,17 @@
         <input type="text" name="name" id="name">
         <label for="date">Event Date</label>
         <input type="date" name="date" id="date">
-        <label for="guests">Number of Guests</label>
         <br>
+        <label for="guests">Number of Guests</label>
         <input type="text" name="guests" id="guests">
         <label for="location">Event Location</label>
         <input type="text" name="location" id="location">
-        <label for="description" method="post">Description</label>
+        <label for="description">Description</label>
         <br>
         <textarea name="description" cols="30" rows="2"></textarea>
+        <input type="checkbox" id="recurring" name="recurring" value='recurring' checked>
+        <label for="recurring">Recurring Event?</label>
         <input type="submit" value="Add Event">
-        <input type="checkbox" id="recurring" name="recurring">
-        <label for="recurring">Recurring Event:</label>
     </form>
     {% for event in events %}
     <div>
@@ -31,7 +31,16 @@
             <span>&#8635;</span> {% endif %}
         </p>
     </div>
-    {% endfor %} {% endblock %}
+    {% endfor %}
+    <form action="/remove-event" method="post" class="deleteform">
+        <label for="eventname">Event Name</label>
+        <input type="text" name="eventname" id="eventname">
+        <label for="date">Event Date</label>
+        <input type="eventdate" name="eventdate" id="eventdate">
+        <input type="submit" value="Remove Event">
+    </form>
+    {% endblock %}
+
 </body>
 
 </html>
