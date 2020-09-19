@@ -28,3 +28,9 @@ body {
     margin: 20px;
     justify-content: space-evenly;
 }
+
+.button {
+    appearance: button;
+    text-decoration: none;
+    color: initial;
+}
