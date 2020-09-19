@@ -1,0 +1,30 @@
+body {
+    align-items: center;
+    background-color: #FFFAFB;
+    text-decoration: none;
+    border: none;
+}
+
+#headerheader {
+    font-family: 'IM Fell DW Pica', serif;
+    color: #235789;
+    text-align: center;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    color: #55917F;
+    padding: 20px;
+    align-items: stretch;
+}
+
+#submit {
+    margin: 20px;
+}
+
+.flexform {
+    flex-flow: wrap;
+    margin: 20px;
+    justify-content: space-evenly;
+}

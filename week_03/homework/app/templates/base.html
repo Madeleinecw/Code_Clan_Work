@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=IM+Fell+DW+Pica:ital@1&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Rock, Paper, Scissors!</title>
+</head>
+
+<body>
+    <header id="headerheader">
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+        <h1>Rock, Paper, Scissors!</h1>
+        <hr> {% block content %}{% endblock %}
+    </header>
+</body>
+
+</html>
