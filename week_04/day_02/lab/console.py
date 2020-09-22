@@ -11,5 +11,6 @@ artist_repository.save(artist_1)
 album_repository.save(album_1)
 artist_repository.select_all()
 album_repository.select_all()
-
-pdb.set_trace()
+artist = artist_repository.get_artist(album_1)
+print(artist_repository.get_artist(album_1))
+print(artist.name)

@@ -5,3 +5,6 @@ class Album:
         self.genre = genre
         self.artist = artist
         self.id = id
+
+    def __str__(self):
+        return f'Name: {self.name}, Genre: {self.genre}, Artist: {self.artist}, ID: {self.id}'
