@@ -18,7 +18,6 @@ def index():
 def play():
     name1 = request.form["name1"]
     move1 = request.form["moves1"]
-
     name2 = request.form["name2"]
     move2 = request.form["moves2"]
     player1 = Player(name1, move1)
