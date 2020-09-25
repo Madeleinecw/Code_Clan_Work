@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Merchants</h2>
+<h3><a href="/merchants/new">New Merchant</a></h3>
+{% for merchant in merchants %}
+
+<section>
+    <p>{{ merchant.name }}</p>
+</section>
+
+{% endfor %} {% endblock %}
