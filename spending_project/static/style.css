@@ -39,3 +39,28 @@ body {
     margin: 0;
     /* margin-left: 30px */
 }
+
+.merchant_container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.merchant_section {
+    flex: 20%;
+    padding: 10px;
+}
+
+.merchant {
+    width: 200px;
+    border: #B9648C 3px solid;
+    text-align: center;
+    color: #FAFAFA;
+    font-weight: bold;
+    background-color: #2e2532;
+}
+
+.merchant>a {
+    text-decoration: none;
+    color: #FAFAFA;
+    justify-content: space-between;
+}

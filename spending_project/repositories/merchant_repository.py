@@ -17,7 +17,6 @@ def select_all():
         merchants.append(merchant)
     return merchants
 
-
 def select(id):
     sql = "SELECT * FROM merchants WHERE id = %s"
     values = [id]
@@ -32,4 +31,9 @@ def delete_all():
 def delete(id):
     sql = "DELETE FROM merchants WHERE id = %s"
     values = [id]
+    run_sql(sql, values)
+
+def update(merchant):
+    sql = "UPDATE merchants SET name = %s WHERE id = %s"
+    values = [merchant.name, merchant.id]
     run_sql(sql, values)
