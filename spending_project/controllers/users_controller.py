@@ -24,8 +24,14 @@ def create_user():
     user_repository.save(new_user)
     return render_template("/users/<id>/dashboard.html", user = new_user)
 
-@users_blueprint.route("/users/<id>/dashboard", methods = ["POST"])
+@users_blueprint.route("/users/<id>/dashboard", methods=["POST", "GET"])
 def user_dashboard(id):
+    user = user_repository.select(id)
+    return render_template("/users/dashboard.html", user = user)
+
+@users_blueprint.route("/users/welcome", methods = ["POST"])
+def welcome():
+    id = request.form["user.id"]
     user = user_repository.select(id)
     return render_template("/users/dashboard.html", user = user)
 
