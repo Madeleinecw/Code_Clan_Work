@@ -33,7 +33,9 @@ def user_dashboard(id):
 def welcome():
     id = request.form["user.id"]
     user = user_repository.select(id)
-    return render_template("/users/dashboard.html", user = user)
+    transactions, merchants = user_repository.select_transactions(user)
+
+    return render_template("/users/dashboard.html", user = user, transactions = transactions, merchants = merchants)
 
 @users_blueprint.route("/users/<id>", methods=["POST"])
 def update_user(id):
@@ -47,7 +49,8 @@ def signed_up():
     name = request.form["name"]
     user = User(name, id)
     user_repository.save(user)
-    return render_template("/users/first_visit.html", user = user)
+    transactions, merchants = user_repository.select_transactions(user)
+    return render_template("/users/first_visit.html", user = user, transactions = transactions, merchants = merchants)
 
 
 

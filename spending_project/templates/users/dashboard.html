@@ -1,5 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
+
+
 <h2>Welcome back, {{ user.name }}! </h2>
 
-{% endblock %}
+So far we have tracked £, since you started tracking with us.
+
+<p>Most recent transactions:</p>
+<p>{% for transaction in transactions %} {{ transaction.amount }} - {{ transaction.merchant.name }} </p> {% endfor %} {% endblock %}

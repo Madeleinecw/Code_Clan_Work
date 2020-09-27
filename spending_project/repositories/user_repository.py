@@ -1,5 +1,8 @@
 from db.run_sql import run_sql
 from models.user import User
+from models.transaction import Transaction
+from models.merchant import Merchant
+
 
 def save(user):
     sql = "INSERT INTO users (name) VALUES (%s) RETURNING id"
@@ -7,6 +10,7 @@ def save(user):
     results = run_sql(sql, values)
     id = results[0]['id']
     user.id = id
+
 
 def select_all():
     users = []
@@ -25,16 +29,36 @@ def select(id):
     user = User(result["name"], result["id"])
     return user
 
+
 def delete_all():
     sql = 'DELETE FROM users'
     run_sql(sql)
+
 
 def delete(id):
     sql = "DELETE FROM users WHERE id = %s"
     values = [id]
     run_sql(sql, values)
 
+
 def update(user):
     sql = "UPDATE users SET name = %s WHERE id = %s"
     values = [user.name, user.id]
     run_sql(sql, values)
+
+
+def select_transactions(user):
+    transactions = []
+    merchants = []
+
+    sql = "SELECT T.id, T.amount, T.merchant_id, M.name FROM transactions as T LEFT JOIN merchants as M on T.merchant_id = M.id WHERE T.user_id = %s;"
+    values = [user.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        transaction = Transaction(row['amount'], user.id, row['merchant_id'], row['id'])
+        merchant = Merchant(row['name'], row['merchant_id'])
+        transactions.append(transaction)
+        merchants.append(merchant)
+
+    return transactions, merchants
