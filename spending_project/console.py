@@ -8,8 +8,11 @@ import repositories.user_repository as user_repository
 
 from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
+from models.tag import Tag
+import repositories.tag_repository as tag_repository
 
 transaction_repository.delete_all()
+tag_repository.delete_all()
 merchant_repository.delete_all()
 user_repository.delete_all()
 
@@ -30,5 +33,11 @@ transaction_repository.save(transaction_1)
 
 transaction_2 = Transaction(10, user_2, merchant_2)
 transaction_repository.save(transaction_2)
+
+tag_1 = Tag('Groceries')
+tag_repository.save(tag_1)
+
+tag_2 = Tag('Transport')
+tag_repository.save(tag_2)
 
 pdb.set_trace()

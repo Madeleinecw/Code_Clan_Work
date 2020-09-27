@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS transactions;
-DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS merchants;
+DROP TABLE IF EXISTS tags;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -14,7 +14,7 @@ CREATE TABLE merchants (
 );
 
 CREATE TABLE tags (
-    tag VARCHAR(255) PRIMARY KEY,
+    tag VARCHAR(255) PRIMARY KEY
 );
 
 CREATE TABLE transactions (

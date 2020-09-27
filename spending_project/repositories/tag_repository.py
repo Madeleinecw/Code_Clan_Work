@@ -4,7 +4,7 @@ from models.tag import Tag
 
 def save(tag):
     sql = "INSERT INTO tags (tag) VALUES (%s)"
-    values = [tag]
+    values = [tag.tag]
     run_sql(sql, values)
 
 def select_all():
