@@ -23,7 +23,7 @@ def select_all():
         merchant = merchant_repository.select(result["merchant_id"])
         transaction = Transaction(result["amount"], user, merchant, result["id"])
         transactions.append(transaction)
-        
+
     return transactions
 
 

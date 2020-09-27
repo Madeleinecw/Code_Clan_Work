@@ -4,3 +4,4 @@ class Transaction:
         self.user = user
         self.merchant = merchant
         self.id = id
+        self.tag = []
