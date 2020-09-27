@@ -49,16 +49,13 @@ def update(user):
 
 def select_transactions(user):
     transactions = []
-    merchants = []
 
     sql = "SELECT T.id, T.amount, T.merchant_id, M.name FROM transactions as T LEFT JOIN merchants as M on T.merchant_id = M.id WHERE T.user_id = %s;"
     values = [user.id]
     results = run_sql(sql, values)
 
     for row in results:
-        transaction = Transaction(row['amount'], user.id, row['merchant_id'], row['id'])
         merchant = Merchant(row['name'], row['merchant_id'])
+        transaction = Transaction(row['amount'], user.id, merchant, row['id'])
         transactions.append(transaction)
-        merchants.append(merchant)
-
-    return transactions, merchants
+    return transactions

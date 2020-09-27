@@ -14,13 +14,16 @@ def save(transaction):
 
 def select_all():
     transactions = []
+
     sql = "SELECT * FROM transactions"
     results = run_sql(sql)
+
     for result in results:
         user = user_repository.select(result["user_id"])
         merchant = merchant_repository.select(result["merchant_id"])
         transaction = Transaction(result["amount"], user, merchant, result["id"])
         transactions.append(transaction)
+        
     return transactions
 
 

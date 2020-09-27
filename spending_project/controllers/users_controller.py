@@ -2,6 +2,7 @@ from flask import Blueprint, Flask, redirect, render_template, request
 
 from models.user import User
 import repositories.user_repository as user_repository
+import repositories.merchant_repository as merchant_repository
 
 users_blueprint = Blueprint("users", __name__)
 
@@ -33,9 +34,8 @@ def user_dashboard(id):
 def welcome():
     id = request.form["user.id"]
     user = user_repository.select(id)
-    transactions, merchants = user_repository.select_transactions(user)
-
-    return render_template("/users/dashboard.html", user = user, transactions = transactions, merchants = merchants)
+    transactions = user_repository.select_transactions(user)
+    return render_template("/users/dashboard.html", user = user, transactions = transactions)
 
 @users_blueprint.route("/users/<id>", methods=["POST"])
 def update_user(id):
@@ -49,8 +49,8 @@ def signed_up():
     name = request.form["name"]
     user = User(name, id)
     user_repository.save(user)
-    transactions, merchants = user_repository.select_transactions(user)
-    return render_template("/users/first_visit.html", user = user, transactions = transactions, merchants = merchants)
+    transactions = user_repository.select_transactions(user)
+    return render_template("/users/first_visit.html", user = user, transactions = transactions)
 
 
 
