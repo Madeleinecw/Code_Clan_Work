@@ -49,3 +49,4 @@ def update(transaction):
     sql = "UPDATE transactions SET (user_id, merchant_id) = (%s, %s) WHERE id = %s"
     values = [transaction.user.id, transaction.merchant.id, transaction.id]
     run_sql(sql, values)
+

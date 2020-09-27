@@ -11,3 +11,8 @@ transactions_blueprint = Blueprint("transactions", __name__)
 def transactions():
     transactions = transaction_repository.select_all()
     return render_template("transactions/index.html", transactions=transactions)
+
+@transactions_blueprint.route("/transaction/<id>/edit")
+def update_transaction(id):
+    transaction_repository.update(id)
+    return redirect("/users/dashboard.html")

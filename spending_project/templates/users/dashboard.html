@@ -8,4 +8,5 @@ So far we have tracked £, since you started tracking with us.
 
 <p>Most recent transactions:</p>
 <p>{% for transaction in transactions %} {{ transaction.amount }} - {{ transaction.merchant.name }}
-    <a href="/transactions/{{ transaction.id }}/edit">EDIT TRANSACTION</a> </p> {% endfor %} {% endblock %}
+    <a href="/transactions/{{ transaction.id }}/edit">EDIT TRANSACTION</a>
+</p> {% endfor %} {% endblock %}
