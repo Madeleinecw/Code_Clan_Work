@@ -2,6 +2,10 @@ from db.run_sql import run_sql
 from models.user import User
 from models.transaction import Transaction
 from models.merchant import Merchant
+from models.tag import Tag
+import repositories.user_repository as user_repository
+import repositories.tag_repository as tag_repository
+
 
 
 def save(user):
@@ -50,12 +54,14 @@ def update(user):
 def select_transactions(user):
     transactions = []
 
-    sql = "SELECT T.id, T.amount, T.merchant_id, M.name FROM transactions as T LEFT JOIN merchants as M on T.merchant_id = M.id WHERE T.user_id = %s;"
+    sql = "SELECT T.id, T.amount, T.tag_id, T.merchant_id, T.user_id, TA.name, M.name FROM transactions as T LEFT JOIN tags as TA on T.tag_id = TA.id LEFT JOIN merchants as M on T.merchant_id = M.id WHERE T.user_id = %s;"
     values = [user.id]
     results = run_sql(sql, values)
 
     for row in results:
         merchant = Merchant(row['name'], row['merchant_id'])
-        transaction = Transaction(row['amount'], user.id, merchant, row['id'])
+        tag = tag_repository.select(row['tag_id'])
+        user = user_repository.select(row['user_id'])
+        transaction = Transaction(row['amount'], user, merchant, tag, row['id'])
         transactions.append(transaction)
     return transactions

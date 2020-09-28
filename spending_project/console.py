@@ -28,16 +28,18 @@ merchant_repository.save(merchant_1)
 merchant_2 = Merchant('ASDA')
 merchant_repository.save(merchant_2)
 
-transaction_1 = Transaction(15, user_1, merchant_1)
-transaction_repository.save(transaction_1)
-
-transaction_2 = Transaction(10, user_2, merchant_2)
-transaction_repository.save(transaction_2)
-
 tag_1 = Tag('Groceries')
 tag_repository.save(tag_1)
 
 tag_2 = Tag('Transport')
 tag_repository.save(tag_2)
+
+transaction_1 = Transaction(15, user_1, merchant_1, tag_1)
+transaction_repository.save(transaction_1)
+
+transaction_2 = Transaction(10, user_2, merchant_2, tag_2)
+transaction_3 = Transaction(25, user_2, merchant_1, tag_1)
+transaction_repository.save(transaction_2)
+transaction_repository.save(transaction_3)
 
 pdb.set_trace()

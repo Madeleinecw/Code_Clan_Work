@@ -1,12 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 
 
+<div class="user_dashboard">
+    <h2>Welcome back, {{ user.name }}! </h2>
 
-<h2>Welcome back, {{ user.name }}! </h2>
-
-So far we have tracked £, since you started tracking with us.
-
-<p>Most recent transactions:</p>
-<p>{% for transaction in transactions %} {{ transaction.amount }} - {{ transaction.merchant.name }}
-    <a href="/transactions/{{ transaction.id }}/edit">EDIT TRANSACTION</a>
-</p> {% endfor %} {% endblock %}
+    So far we have tracked £{{ total }}, since you started tracking with us.
+    <p>
+        <a href="/transactions/new">ADD NEW TRANSACTION</a>
+    </p>
+    <div class="trasactions_list">
+        <p>Most recent transactions:</p>
+        <p>{% for transaction in transactions %} {{ transaction.amount }} - {{ transaction.merchant.name }} - {{ transaction.tag.name }}
+            <a href="/transactions/{{ transaction.id }}">EDIT TRANSACTION</a>
+        </p>
+        {% endfor %} {% endblock %}
+    </div>
+</div>

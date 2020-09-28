@@ -14,7 +14,8 @@ CREATE TABLE merchants (
 );
 
 CREATE TABLE tags (
-    tag VARCHAR(255) PRIMARY KEY
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 );
 
 CREATE TABLE transactions (
@@ -22,6 +23,6 @@ CREATE TABLE transactions (
     amount INT,
     user_id INT REFERENCES users(id),
     merchant_id INT REFERENCES merchants(id),
-    tag VARCHAR REFERENCES tags(tag)
+    tag_id INT REFERENCES tags(id)
 );
 

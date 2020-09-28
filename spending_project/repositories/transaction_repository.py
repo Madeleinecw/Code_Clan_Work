@@ -4,10 +4,12 @@ from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
 from models.user import User
 import repositories.user_repository as user_repository
+from models.tag import Tag
+import repositories.tag_repository as tag_repository
 
 def save(transaction):
-    sql = "INSERT INTO transactions (amount, user_id, merchant_id) VALUES (%s, %s, %s) RETURNING id"
-    values = [transaction.amount, transaction.user.id, transaction.merchant.id]
+    sql = "INSERT INTO transactions (amount, user_id, merchant_id, tag_id) VALUES (%s, %s, %s, %s) RETURNING id"
+    values = [transaction.amount, transaction.user.id, transaction.merchant.id, transaction.tag.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     transaction.id = id
@@ -21,7 +23,8 @@ def select_all():
     for result in results:
         user = user_repository.select(result["user_id"])
         merchant = merchant_repository.select(result["merchant_id"])
-        transaction = Transaction(result["amount"], user, merchant, result["id"])
+        tag = tag_repository.select(result["tag_id"])
+        transaction = Transaction(result["amount"], user, merchant, tag, result["id"])
         transactions.append(transaction)
 
     return transactions
@@ -32,8 +35,9 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
     user = user_repository.select(result["user_id"])
+    tag = tag_repository.select(result["tag_id"])
     merchant = merchant_repository.select(result["merchant_id"])
-    transaction = Transaction(result["amount"], user, merchant, result["id"])
+    transaction = Transaction(result["amount"], user, merchant, tag, result["id"])
     return transaction
 
 def delete_all():
@@ -46,7 +50,7 @@ def delete(id):
     run_sql(sql, values)
 
 def update(transaction):
-    sql = "UPDATE transactions SET (user_id, merchant_id) = (%s, %s) WHERE id = %s"
-    values = [transaction.user.id, transaction.merchant.id, transaction.id]
+    sql = "UPDATE transactions SET (amount, user_id, merchant_id, tag_id) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [transaction.amount, transaction.user.id, transaction.merchant.id, transaction.tag.id, transaction.id]
     run_sql(sql, values)
-
+    return transaction

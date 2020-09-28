@@ -1,23 +1,15 @@
-{% extends "base.html" %} {% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<form action="/transactions/create" method="post" class="transaction_new">
+<form action="/transactions/{{transaction.id}}/edit" method="post" class="transaction_edit">
     <div>
         <label for="amount">Amount:</label>
-        <input type="amountz" id="amount" name="amount" value="">
+        <input type="number" id="amount" name="amount" value="{{transaction.amount}}" required autofocus>
     </div>
     <div>
         <label for="merchant">Merchant:</label>
         <select id="merchant" name="merchant">
         {% for merchant in merchants %}
             <option value = {{merchant.id}}> {{ merchant.name }} </option>
-        {% endfor %}
-        </select>
-    </div>
-    <div>
-        <label for="user">Confirm User:</label>
-        <select id="user" name="user">
-        {% for user in users %}
-            <option value = {{user.id}}> {{ user.name }} </option>
         {% endfor %}
         </select>
     </div>
@@ -32,6 +24,6 @@
         </select>
 
     </div>
-    <button type="submit">Add Transaction</button>
+    <button type="submit">Update Transaction</button>
 </form>
 {% endblock %}

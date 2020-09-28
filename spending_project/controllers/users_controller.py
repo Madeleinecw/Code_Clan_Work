@@ -1,5 +1,6 @@
 from flask import Blueprint, Flask, redirect, render_template, request
-
+from models.tag import Tag
+import repositories.tag_repository as tag_repository
 from models.user import User
 import repositories.user_repository as user_repository
 import repositories.merchant_repository as merchant_repository
@@ -35,7 +36,14 @@ def welcome():
     id = request.form["user.id"]
     user = user_repository.select(id)
     transactions = user_repository.select_transactions(user)
-    return render_template("/users/dashboard.html", user = user, transactions = transactions)
+    total = 0
+    tags = tag_repository.select_all()
+    for transaction in transactions:
+        total += transaction.amount
+
+    total_spent = str(total)
+
+    return render_template("/users/dashboard.html", user = user, transactions = transactions, tags = tags, total = total_spent)
 
 @users_blueprint.route("/users/<id>", methods=["POST"])
 def update_user(id):

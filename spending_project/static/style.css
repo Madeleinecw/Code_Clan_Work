@@ -67,3 +67,13 @@ body {
     color: #FAFAFA;
     justify-content: space-between;
 }
+
+.transaction_edit>div {
+    align-items: center;
+    margin: 20px;
+}
+
+.user_dashboard>transactions_list {
+    text-decoration: none;
+    margin-left: 40px
+}
