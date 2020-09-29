@@ -16,12 +16,11 @@
                 <li class="menu_links"><a href="/tags">TAGS</a></li>
                 <div class="dropdown">
                     <button class="dropbtn">USERS</button>
-                    <li class="menu_links">
-                        <a href="/users"></a>
-                    </li>
+                    <a href="/users"></a>
                     <div class="dropdown-content">
-                        {% for user in users %}
-                        <li> <a href="/users/{{user.id}}/dashboard">{{user.name}}</a> </li> {% endfor %}
+                        <li> <a href="/users/new">New</a>
+                            <li> <a href="/users">Manage</a> {% for user in users %}
+                                <li> <a href="/users/{{user.id}}/dashboard">{{user.name}}</a> </li> {% endfor %}
                     </div>
                 </div>
                 <li class="menu_links"><a href="/merchants">MERCHANTS</a></li>
