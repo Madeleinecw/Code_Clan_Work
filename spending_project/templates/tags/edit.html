@@ -2,6 +2,15 @@
 
 <h2>{{ tag.name }}</h2>
 
+Your household has spent a £{{total}} in total on {{tag.name}}
+
+
+<p> The following transactions have been tracked using this tag:</p>
+<div class="transactions_list">
+    {% for transaction in transactions %} {% if transaction.tag.id == tag.id %}
+    <div class="transactions_tagged"> £{{transaction.amount}} spent at {{transaction.merchant.name}} by {{transaction.user.name}}</div> {% endif %}
+</div>{% endfor %}
+
 <form action="/tags/{{tag.id}}" method="post">
     <div>
         <label for="name">Name:</label>
@@ -10,8 +19,4 @@
     <button type="submit">Update Tag</button>
 </form>
 
-<p> The following transactions have been tracked using this tag:</p>
-<div>
-    {% for transaction in transactions %} {% if transaction.tag.id == tag.id %}
-    <div class="transactions_tagged"> £{{transaction.amount}} spent at {{transaction.merchant.name}} by {{transaction.user.name}}</div> {% endif %}
-</div>{% endfor %} {% endblock %}
+{% endblock %}

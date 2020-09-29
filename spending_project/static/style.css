@@ -9,6 +9,10 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+body>h2 {
+    text-align: center;
+}
+
 .menu {
     display: flex;
     justify-content: space-between;
@@ -170,6 +174,8 @@ button {
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: large;
+    border: none;
+    transition: 0.5s;
 }
 
 button:hover {
@@ -179,4 +185,11 @@ button:hover {
 .transactions_tagged {
     padding: 5px;
     font-family: Helvetica, Arial, sans-serif;
+    border: #B9648C 1px solid;
+    margin: 10px;
+}
+
+.transactions_merchant {
+    border: #B9648C 1px solid;
+    margin: 10px
 }

@@ -27,7 +27,11 @@ def create_tag():
 def edit(id):
     tag = tag_repository.select(id)
     transactions = transaction_repository.select_all()
-    return render_template("tags/edit.html", tag = tag, transactions = transactions)
+    total = 0
+    for transaction in transactions:
+        if transaction.tag.id == tag.id:
+            total += transaction.amount
+    return render_template("tags/edit.html", tag = tag, transactions = transactions, total = total)
 
 @tags_blueprint.route("/tags/<id>", methods=['post'])
 def update(id):

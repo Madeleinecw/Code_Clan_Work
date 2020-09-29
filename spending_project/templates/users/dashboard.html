@@ -11,9 +11,14 @@
     </p>
     <div class="trasactions_list">
         <p>Most recent transactions:</p>
-        <p>{% for transaction in transactions %} {{ transaction.amount }} - {{ transaction.merchant.name }} - {{ transaction.tag.name }}
+
+        {% for transaction in transactions %}
+
+        <div class="transactions_tagged">
+            £{{ transaction.amount }} spent at {{ transaction.merchant.name }} on {{ transaction.tag.name }}
             <button a href="/transactions/{{ transaction.id }}">EDIT</button>
-        </p>
+        </div>
+
         {% endfor %} {% endblock %}
     </div>
 </div>

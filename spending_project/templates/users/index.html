@@ -6,9 +6,9 @@
 
 <section>
     <p>{{ user.name }}</p>
-    <a href="/users/{{user.id}}/dashboard">VIEW PROFILE</a>
-    <a href="/transactions/new">ADD NEW TRANSACTION</a>
-    <a href="/budgets/{{user.id}}/edit">EDIT BUDGET</a>
+    <button a href="/users/{{user.id}}/dashboard">PROFILE</button>
+    <button a href="/transactions/new">NEW TRANSACTION</button>
+    <button a href="/budgets/{{user.id}}/edit">EDIT BUDGET</button>
 </section>
 
 {% endfor %} {% endblock %}

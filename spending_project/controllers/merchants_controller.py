@@ -2,6 +2,7 @@ from flask import Blueprint, Flask, redirect, render_template, request
 
 from models.merchant import Merchant
 import repositories.merchant_repository as merchant_repository
+import repositories.transaction_repository as transaction_repository
 
 merchants_blueprint = Blueprint("merchants", __name__)
 
@@ -24,7 +25,12 @@ def create_merchant():
 @merchants_blueprint.route("/merchants/<id>/edit")
 def edit(id):
     merchant = merchant_repository.select(id)
-    return render_template("merchants/edit.html", merchant = merchant)
+    transactions = transaction_repository.select_all()
+    total = 0
+    for transaction in transactions:
+        if transaction.merchant.id == merchant.id:
+            total += transaction.amount
+    return render_template("merchants/edit.html", merchant = merchant, transactions = transactions, total = total)
 
 @merchants_blueprint.route("/merchants/<id>", methods=['post'])
 def update(id):

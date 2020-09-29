@@ -2,6 +2,14 @@
 
 <h2>{{ merchant.name }}</h2>
 
+Your household has spent a £{{total}} in total at {{merchant.name}}
+
+<p> The following tranactions have been tracked using this merchant:</p>
+<div class="transactions_list">
+    {% for transaction in transactions %} {% if transaction.merchant.id == merchant.id %}
+    <div class="transactions_merchant"> £{{transaction.amount}} spent at {{transaction.merchant.name}} by {{transaction.user.name}}</div> {% endif %}
+</div>{% endfor %}
+
 <form action="/merchants/{{merchant.id}}" method="post">
     <div>
         <label for="name">Name:</label>
