@@ -80,3 +80,11 @@ body>main {
     text-decoration: none;
     margin-left: 40px
 }
+
+.dropbtn {
+    background-color: #14233C;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}

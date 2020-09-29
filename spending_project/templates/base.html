@@ -14,10 +14,15 @@
             <ul class="menu">
                 <li class="menu_links"><a href="/">HOME</a></li>
                 <li class="menu_links"><a href="/tags">TAGS</a></li>
-                <li class="menu_links"><a href="/users">USERS</a></li>
-                <div class="dropdown-content">
-                    {% for user in users %}
-                    <a href="/users/{{user.id}}/dashboard">{{user.name}}</a> {% endfor %}
+                <div class="dropdown">
+                    <button class="dropbtn">USERS</button>
+                    <li class="menu_links">
+                        <a href="/users"></a>
+                    </li>
+                    <div class="dropdown-content">
+                        {% for user in users %}
+                        <li> <a href="/users/{{user.id}}/dashboard">{{user.name}}</a> </li> {% endfor %}
+                    </div>
                 </div>
                 <li class="menu_links"><a href="/merchants">MERCHANTS</a></li>
                 <li class="menu_links"><a href="/budgets/index">BUDGETS</a></li>
