@@ -2,6 +2,7 @@ from flask import Blueprint, Flask, redirect, render_template, request
 
 from models.tag import Tag
 import repositories.tag_repository as tag_repository
+import repositories.transaction_repository as transaction_repository
 
 tags_blueprint = Blueprint("tags", __name__)
 
@@ -25,7 +26,8 @@ def create_tag():
 @tags_blueprint.route("/tags/<id>/edit")
 def edit(id):
     tag = tag_repository.select(id)
-    return render_template("tags/edit.html", tag = tag)
+    transactions = transaction_repository.select_all()
+    return render_template("tags/edit.html", tag = tag, transactions = transactions)
 
 @tags_blueprint.route("/tags/<id>", methods=['post'])
 def update(id):

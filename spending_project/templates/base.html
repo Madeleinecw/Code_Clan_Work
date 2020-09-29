@@ -13,7 +13,15 @@
         <nav class="menu_container">
             <ul class="menu">
                 <li class="menu_links"><a href="/">HOME</a></li>
-                <li class="menu_links"><a href="/tags">TAGS</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">TAGS</button>
+                    <a href="/tags"></a>
+                    <div class="dropdown-content">
+                        <li> <a href="/tags/new">New</a>
+                            <li> <a href="/tags">Manage</a> {% for tag in tags %}
+                                <li> <a href="/tags/{{tag.id}}/edit">{{tag.name}}</a> </li> {% endfor %}
+                    </div>
+                </div>
                 <div class="dropdown">
                     <button class="dropbtn">USERS</button>
                     <a href="/users"></a>
@@ -23,7 +31,15 @@
                                 <li> <a href="/users/{{user.id}}/dashboard">{{user.name}}</a> </li> {% endfor %}
                     </div>
                 </div>
-                <li class="menu_links"><a href="/merchants">MERCHANTS</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">MERCHANTS</button>
+                    <a href="/merchants"></a>
+                    <div class="dropdown-content">
+                        <li> <a href="/merchants/new">New</a>
+                            <li> <a href="/merchants">Manage</a> {% for merchant in merchants %}
+                                <li> <a href="/merchants/{{merchant.id}}/edit">{{merchant.name}}</a> </li> {% endfor %}
+                    </div>
+                </div>
                 <li class="menu_links"><a href="/budgets/index">BUDGETS</a></li>
                 <li class="menu_links"><a href="/transactions">TRANSACTIONS</a></li>
             </ul>

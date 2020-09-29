@@ -2,4 +2,4 @@
 <h3> Current total Household Budget is {{budget_total}}</h3>
 {% for user in users %}
 <h4>{{ user.name }}'s current budget is set at £{{user.budget}} </h4>
-<a href="/budgets/{{user.id}}/edit">EDIT</a> {% endfor %} {% endblock %}
+<button a href="/budgets/{{user.id}}/edit">EDIT</button> {% endfor %} {% endblock %}

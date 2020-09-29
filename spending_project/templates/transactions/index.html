@@ -4,7 +4,8 @@
 
 Your household has tracked a total of £{{total}}! {% for transaction in transactions %}
 <section>
-    <p> {{ transaction.amount }} {{ transaction.merchant.name }} {{transaction.tag.name}}</p>
+    <p> £{{ transaction.amount }} was spent at {{ transaction.merchant.name }} for {{transaction.tag.name}} by {{transaction.user.name}}</p>
+    <button a href="/transactions/{{transaction.id}}/edit">EDIT</button>
 </section>
 
 {% endfor %} {% endblock %}

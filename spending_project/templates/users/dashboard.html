@@ -7,12 +7,12 @@
     So far we have tracked £{{ total }}, since you started tracking with us. Your budget is currently set at £{{user.budget}}.
     <div>{% if total >= user.budget %} You have reached your total budget! Slow your spending! {% endif %}</div>
     <p>
-        <a href="/transactions/new">ADD NEW TRANSACTION</a>
+        <button a href="/transactions/new">ADD NEW</button>
     </p>
     <div class="trasactions_list">
         <p>Most recent transactions:</p>
         <p>{% for transaction in transactions %} {{ transaction.amount }} - {{ transaction.merchant.name }} - {{ transaction.tag.name }}
-            <a href="/transactions/{{ transaction.id }}">EDIT TRANSACTION</a>
+            <button a href="/transactions/{{ transaction.id }}">EDIT</button>
         </p>
         {% endfor %} {% endblock %}
     </div>
