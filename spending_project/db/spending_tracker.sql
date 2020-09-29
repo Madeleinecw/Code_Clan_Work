@@ -5,7 +5,8 @@ DROP TABLE IF EXISTS tags;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255),
+    budget INT
 );
 
 CREATE TABLE merchants (

@@ -13,13 +13,21 @@
         <nav class="menu_container">
             <ul class="menu">
                 <li class="menu_links"><a href="/">HOME</a></li>
+                <li class="menu_links"><a href="/tags">TAGS</a></li>
                 <li class="menu_links"><a href="/users">USERS</a></li>
+                <div class="dropdown-content">
+                    {% for user in users %}
+                    <a href="/users/{{user.id}}/dashboard">{{user.name}}</a> {% endfor %}
+                </div>
                 <li class="menu_links"><a href="/merchants">MERCHANTS</a></li>
+                <li class="menu_links"><a href="/budgets/index">BUDGETS</a></li>
                 <li class="menu_links"><a href="/transactions">TRANSACTIONS</a></li>
             </ul>
         </nav>
     </header>
-    <div>{% block content %} {% endblock %}</div>
+    <main>
+        <div>{% block content %} {% endblock %}</div>
+    </main>
 </body>
 
 </html>

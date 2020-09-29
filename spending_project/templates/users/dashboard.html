@@ -4,7 +4,8 @@
 <div class="user_dashboard">
     <h2>Welcome back, {{ user.name }}! </h2>
 
-    So far we have tracked £{{ total }}, since you started tracking with us.
+    So far we have tracked £{{ total }}, since you started tracking with us. Your budget is currently set at £{{user.budget}}.
+    <div>{% if total >= user.budget %} You have reached your total budget! Slow your spending! {% endif %}</div>
     <p>
         <a href="/transactions/new">ADD NEW TRANSACTION</a>
     </p>

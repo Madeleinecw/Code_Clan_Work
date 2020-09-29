@@ -9,8 +9,8 @@ import repositories.tag_repository as tag_repository
 
 
 def save(user):
-    sql = "INSERT INTO users (name) VALUES (%s) RETURNING id"
-    values = [user.name]
+    sql = "INSERT INTO users (name, budget) VALUES (%s, %s) RETURNING id"
+    values = [user.name, user.budget]
     results = run_sql(sql, values)
     id = results[0]['id']
     user.id = id
@@ -21,7 +21,7 @@ def select_all():
     sql = "SELECT * FROM users"
     results = run_sql(sql)
     for result in results:
-        user = User(result["name"], result["id"])
+        user = User(result["name"], result["budget"],  result["id"])
         users.append(user)
     return users
 
@@ -30,7 +30,7 @@ def select(id):
     sql = "SELECT * FROM users WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    user = User(result["name"], result["id"])
+    user = User(result["name"], result["budget"], result["id"])
     return user
 
 
@@ -46,8 +46,8 @@ def delete(id):
 
 
 def update(user):
-    sql = "UPDATE users SET name = %s WHERE id = %s"
-    values = [user.name, user.id]
+    sql = "UPDATE users SET (name, budget) = (%s, %s) WHERE id = %s"
+    values = [user.name, user.budget, user.id,]
     run_sql(sql, values)
 
 

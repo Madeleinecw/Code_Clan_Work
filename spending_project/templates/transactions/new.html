@@ -8,6 +8,7 @@
     <div>
         <label for="merchant">Merchant:</label>
         <select id="merchant" name="merchant">
+            <option value = "" selected disabled> </option>
         {% for merchant in merchants %}
             <option value = {{merchant.id}}> {{ merchant.name }} </option>
         {% endfor %}

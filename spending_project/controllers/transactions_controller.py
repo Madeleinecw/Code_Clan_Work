@@ -11,7 +11,10 @@ transactions_blueprint = Blueprint("transactions", __name__)
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
-    return render_template("transactions/index.html", transactions=transactions)
+    total = 0
+    for transaction in transactions:
+        total += transaction.amount
+    return render_template("transactions/index.html", transactions=transactions, total = total)
 
 @transactions_blueprint.route("/transactions/new")
 def new_transaction():
@@ -29,7 +32,7 @@ def create_transaction():
     new_transaction = Transaction(amount, user, merchant, tag)
     transaction_repository.save(new_transaction)
     tags = tag_repository.select_all()
-    transactions = transaction_repository.select_all()
+    transactions = user_repository.select_transactions(user)
     total = 0
     for transaction in transactions:
         total += transaction.amount

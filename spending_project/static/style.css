@@ -40,7 +40,10 @@ body {
 
 body {
     margin: 0;
-    /* margin-left: 30px */
+}
+
+body>main {
+    margin-left: 30px
 }
 
 .merchant_container {

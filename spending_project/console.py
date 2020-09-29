@@ -16,10 +16,10 @@ tag_repository.delete_all()
 merchant_repository.delete_all()
 user_repository.delete_all()
 
-user_1 = User('Mary Berry')
+user_1 = User('Mary Berry', 0)
 user_repository.save(user_1)
 
-user_2 = User('Paul Hollywood')
+user_2 = User('Paul Hollywood', 0)
 user_repository.save(user_2)
 
 merchant_1 = Merchant('Tesco')
