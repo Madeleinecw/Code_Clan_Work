@@ -6,7 +6,7 @@ Your household has spent a £{{total}} in total on {{tag.name}}
 
 
 <p> The following transactions have been tracked using this tag:</p>
-<div class="transactions_list">
+<div>
     {% for transaction in transactions %} {% if transaction.tag.id == tag.id %}
     <div class="transactions_tagged"> £{{transaction.amount}} spent at {{transaction.merchant.name}} by {{transaction.user.name}}</div> {% endif %}
 </div>{% endfor %}
@@ -16,7 +16,7 @@ Your household has spent a £{{total}} in total on {{tag.name}}
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="{{tag.name}}" required autofocus>
     </div>
-    <button type="submit">Update Tag</button>
+    <div> <button type="submit">Update Tag</button></div>
 </form>
 
 {% endblock %}

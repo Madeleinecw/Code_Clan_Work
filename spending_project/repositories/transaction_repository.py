@@ -40,6 +40,13 @@ def select(id):
     transaction = Transaction(result["amount"], user, merchant, tag, result["id"])
     return transaction
 
+
+def update(transaction):
+    sql = "UPDATE transactions SET (amount, user_id, merchant_id, tag_id) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [transaction.amount, transaction.user.id, transaction.merchant.id, transaction.tag.id, transaction.id]
+    run_sql(sql, values)
+    return transaction
+
 def delete_all():
     sql = 'DELETE FROM transactions'
     run_sql(sql)
@@ -48,9 +55,3 @@ def delete(id):
     sql = "DELETE FROM transactions WHERE id = %s"
     values = [id]
     run_sql(sql, values)
-
-def update(transaction):
-    sql = "UPDATE transactions SET (amount, user_id, merchant_id, tag_id) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [transaction.amount, transaction.user.id, transaction.merchant.id, transaction.tag.id, transaction.id]
-    run_sql(sql, values)
-    return transaction

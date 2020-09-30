@@ -4,6 +4,7 @@ import repositories.tag_repository as tag_repository
 from models.user import User
 import repositories.user_repository as user_repository
 import repositories.merchant_repository as merchant_repository
+import repositories.transaction_repository as transaction_repository
 
 users_blueprint = Blueprint("users", __name__)
 
@@ -90,3 +91,13 @@ def update_budget(id):
     for user in users:
         budget_total += user.budget
     return render_template("/budgets/index.html", users= users, budget_total = budget_total)
+
+@users_blueprint.route("/users/<id>/delete", methods = ["POST"])
+def delete_user(id):
+    transactions = transaction_repository.select_all()
+    user = user_repository.select(id)
+    for transaction in transactions:
+        if transaction.user.id == user.id:
+            transaction_repository.delete(transaction.id)
+    user_repository.delete(user.id)
+    return redirect("/users")

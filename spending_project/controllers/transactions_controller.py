@@ -38,6 +38,11 @@ def create_transaction():
         total += transaction.amount
     return render_template("/users/dashboard.html", user = user, transactions = transactions, total = total, tags = tags)
 
+@transactions_blueprint.route("/transactions/<id>/delete", methods= ["POST"])
+def delete(id):
+    transaction_repository.delete(id)
+    return redirect("/transactions")
+
 @transactions_blueprint.route("/transactions/<id>")
 def edit(id):
     transaction = transaction_repository.select(id)
