@@ -168,18 +168,24 @@ input {
     color: white;
 }
 
-button {
+.links {
     background-color: #14233C;
-    color: white;
+    display: inline-block;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: large;
-    border: none;
     transition: 0.5s;
     margin: 10px;
+    text-decoration: none;
+    padding: 7px;
 }
 
-button:hover {
+.links>a {
+    text-decoration: none;
+    color: white;
+}
+
+.links>a:hover {
     color: #B9648C;
 }
 
@@ -212,4 +218,23 @@ input {
     border: none;
     font-size: large;
     margin: 10px;
+}
+
+input:hover {
+    color: #B9648C;
+}
+
+button {
+    background-color: #14233C;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    border: none;
+    transition: 0.5s;
+    margin: 10px;
+}
+
+button:hover {
+    color: #B9648C;
 }

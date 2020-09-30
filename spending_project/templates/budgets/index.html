@@ -3,4 +3,4 @@
 {% for user in users %}
 <div class="transactions_tagged">
     <h4>{{ user.name }}'s current budget is set at £{{user.budget}} </h4>
-    <button a href="/budgets/{{user.id}}/edit">EDIT</button> </div>{% endfor %} {% endblock %}
+    <div class="links"><a href="/budgets/{{user.id}}/edit">EDIT</a> </div>{% endfor %} {% endblock %}
