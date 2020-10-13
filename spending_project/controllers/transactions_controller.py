@@ -8,6 +8,8 @@ import repositories.tag_repository as tag_repository
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
+
+# Get all instances of transactions from database. Determine total spent as value of all transactions amounts added. Return variables to the template containing all transactions info and sum total. 
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
